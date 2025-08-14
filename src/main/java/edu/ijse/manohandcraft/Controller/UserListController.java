@@ -181,6 +181,7 @@ public class UserListController implements Initializable {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
         }
+
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {

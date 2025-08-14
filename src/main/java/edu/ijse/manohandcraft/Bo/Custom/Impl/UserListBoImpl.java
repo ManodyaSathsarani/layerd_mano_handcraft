@@ -48,7 +48,6 @@ public class UserListBoImpl implements UserListBo {
                 userListDto.getPassword(),
                 userListDto.getRole(),
                 userListDto.getRegistration_Date()));
-
     }
 
     @Override

@@ -7,8 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.mano_handcraft.db.DBConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,34 +49,27 @@ public class LoginPageController {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                if (Objects.equals(inputUserName,"manodya")){
-                    navigateTo("/view/DashboardO.fxml");
-                }
-                if (Objects.equals(inputUserName,"lasitha")){
-                    navigateTo("/view/DashboardS.fxml");
+                if (Objects.equals(inputUserName, "manodya")) {
+                    ancMainPage.getChildren().clear();
+                    AnchorPane load = FXMLLoader.load(getClass().getResource("/view/DashboardO.fxml"));
+                    ancMainPage.getChildren().add(load);
+                } else if (Objects.equals(inputUserName, "lasitha")) {
+                    ancMainPage.getChildren().clear();
+                    AnchorPane load = FXMLLoader.load(getClass().getResource("/view/DashboardS.fxml"));
+                    ancMainPage.getChildren().add(load);
                 }
             } else {
+
+
+
                 new Alert(Alert.AlertType.ERROR, "Invalid username or password!").show();
             }
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Database error!").show();
-        }
-    }
-
-    private void navigateTo(String path){
-        try {
-            ancMainPage.getChildren().clear();
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource(path));
-
-            anchorPane.prefWidthProperty().bind(ancMainPage.widthProperty());
-            anchorPane.prefHeightProperty().bind(ancMainPage.heightProperty());
-
-            ancMainPage.getChildren().add(anchorPane);
-        }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,"Wrong").show();
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

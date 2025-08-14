@@ -1,6 +1,7 @@
 package edu.ijse.manohandcraft.Dao.Custom.Impl;
 
 import edu.ijse.manohandcraft.Dao.Custom.UserListDAO;
+import edu.ijse.manohandcraft.Dto.UserListDto;
 import edu.ijse.manohandcraft.Entity.UserList;
 import edu.ijse.manohandcraft.Util.SQLUtil;
 
@@ -36,17 +37,19 @@ public class UserListDAOImpl implements UserListDAO {
                 DTOs.getRole(),
                 DTOs.getRegistration_Date());
     }
+
     @Override
     public boolean update(UserList DTOs) throws SQLException, ClassNotFoundException {
+        // Added missing parameter for WHERE clause
         return SQLUtil.executeUpdate(
-                "INSERT INTO Users (user_id, name, username, password, role, Registration_date, Status) VALUES (?, ?, ?, ?, ?, ?,)",
-                DTOs.getUser_Id(),
+                "UPDATE Users SET name = ?, username = ?, password = ?, role = ?, Registration_date = ? WHERE user_id = ?",
                 DTOs.getName(),
                 DTOs.getUserName(),
                 DTOs.getPassword(),
                 DTOs.getRole(),
-                DTOs.getRegistration_Date());
-
+                DTOs.getRegistration_Date(),
+                DTOs.getUser_Id()
+        );
     }
 
     @Override

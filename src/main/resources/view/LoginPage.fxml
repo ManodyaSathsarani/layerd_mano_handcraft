@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancMainPage" prefWidth="1800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.mano_handcraft.controller.LoginPageController">
+<AnchorPane fx:id="ancMainPage" prefWidth="1800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.manohandcraft.Controller.LoginPageController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <Pane layoutX="82.0" layoutY="141.0" prefHeight="808.0" prefWidth="542.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
