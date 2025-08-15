@@ -2,6 +2,7 @@ package edu.ijse.manohandcraft.Dao;
 
 import edu.ijse.manohandcraft.Dao.Custom.Impl.CustomerManagementDAOImpl;
 import edu.ijse.manohandcraft.Dao.Custom.Impl.EmployeeManagementDAOImpl;
+import edu.ijse.manohandcraft.Dao.Custom.Impl.OrderManagementDAOImpl;
 import edu.ijse.manohandcraft.Dao.Custom.Impl.UserListDAOImpl;
 
 public class DAOFactory {
@@ -17,7 +18,8 @@ public class DAOFactory {
     public enum DAOType {
         USERLIST,
         CUSTOMERMANAGEMENT,
-        EMPLOYEEMANAGEMENT
+        EMPLOYEEMANAGEMENT,
+        ORDERMANAGEMENT
 
     }
 
@@ -29,7 +31,8 @@ public class DAOFactory {
                 return new CustomerManagementDAOImpl();
             case EMPLOYEEMANAGEMENT:
                 return new EmployeeManagementDAOImpl();
-
+            case ORDERMANAGEMENT:
+                return new OrderManagementDAOImpl();
             default:
                 return null;
         }

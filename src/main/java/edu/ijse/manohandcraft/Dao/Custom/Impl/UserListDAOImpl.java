@@ -29,7 +29,7 @@ public class UserListDAOImpl implements UserListDAO {
     @Override
     public boolean save(UserList DTOs) throws SQLException, ClassNotFoundException {
         return SQLUtil.executeUpdate(
-                "INSERT INTO Users (user_id, name, username, password, role, Registration_date, Status) VALUES (?, ?, ?, ?, ?, ?,)",
+                "INSERT INTO users (user_id, username, name, role,username,password, role,Registration_date) VALUES (?, ?, ?, ?, ?,?,?,?)",
                 DTOs.getUser_Id(),
                 DTOs.getName(),
                 DTOs.getUserName(),

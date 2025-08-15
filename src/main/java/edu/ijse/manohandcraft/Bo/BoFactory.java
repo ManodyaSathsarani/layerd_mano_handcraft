@@ -2,6 +2,7 @@ package edu.ijse.manohandcraft.Bo;
 
 import edu.ijse.manohandcraft.Bo.Custom.Impl.CustomerManagementBoImpl;
 import edu.ijse.manohandcraft.Bo.Custom.Impl.EmployeeManagementBoImpl;
+import edu.ijse.manohandcraft.Bo.Custom.Impl.OrderManagementBoImpl;
 import edu.ijse.manohandcraft.Bo.Custom.Impl.UserListBoImpl;
 
 public class BoFactory {
@@ -17,7 +18,8 @@ public class BoFactory {
     public enum BOType {
         USER,
         CUSTOMERMANAGEMENT,
-        EMPLOYEEMANAGEMENT
+        EMPLOYEEMANAGEMENT,
+        ORDERMANAGEMENT
 
     }
 
@@ -29,7 +31,8 @@ public class BoFactory {
                 return new CustomerManagementBoImpl();
             case EMPLOYEEMANAGEMENT:
                 return  new EmployeeManagementBoImpl();
-
+            case ORDERMANAGEMENT:
+                return new OrderManagementBoImpl();
 
             default:
                 return null;

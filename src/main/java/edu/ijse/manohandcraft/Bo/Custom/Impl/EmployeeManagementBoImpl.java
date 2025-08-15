@@ -25,7 +25,7 @@ public class EmployeeManagementBoImpl implements EmployeeManagementBo {
                     employeeManagement.getRole(),
                     employeeManagement.getHire_date(),
                     employeeManagement.getPhone(),
-                    employeeManagement.getPhone());
+                    employeeManagement.getPhone()));
 
         }
         return employeeManagementDtos;
@@ -44,7 +44,7 @@ public class EmployeeManagementBoImpl implements EmployeeManagementBo {
 
     @Override
     public boolean updateEmployee(EmployeeManagementDto employeeManagementDto ) throws SQLException, ClassNotFoundException {
-        return employeeManagementDAO.save(new EmployeeManagement(
+        return employeeManagementDAO.update(new EmployeeManagement(
                 employeeManagementDto.getEmployee_Id(),
                 employeeManagementDto.getName(),
                 employeeManagementDto.getRole(),

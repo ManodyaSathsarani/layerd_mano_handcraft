@@ -26,16 +26,13 @@ public class EmployeeManagementcontroller implements Initializable {
     public Label lblId;
     public TextField txtName;
     public TextField txtRole;
-    public TextField txtHireDate ;
+    public TextField txtHireDate;
     public TextField txtPhone;
     public TextField txtAddress;
 
     public TableView<EmployeeManagementTM> tblEmployeeManagement;
 
-    EmployeeManagementBo employeeManagementBo =(EmployeeManagementBo) BoFactory.getInstance().getBO(BoFactory.BOType.EMPLOYEEMANAGEMENT);
-
-
-
+    EmployeeManagementBo employeeManagementBo = (EmployeeManagementBo) BoFactory.getInstance().getBO(BoFactory.BOType.EMPLOYEEMANAGEMENT);
 
 
     public Button btnSave;
@@ -50,7 +47,7 @@ public class EmployeeManagementcontroller implements Initializable {
         tblEmployeeManagement.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("role"));
         tblEmployeeManagement.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("hire_date"));
         tblEmployeeManagement.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("phone"));
-        tblEmployeeManagement.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("assress"));
+        tblEmployeeManagement.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("address"));
         try {
             resetPage();
             loadNextId();
@@ -77,7 +74,6 @@ public class EmployeeManagementcontroller implements Initializable {
         }
 
     }
-
 
 
     private void resetPage() {
@@ -150,7 +146,7 @@ public class EmployeeManagementcontroller implements Initializable {
 
         try {
             employeeManagementBo.saveEmployee(new EmployeeManagementDto(
-                    employeeId ,employeeName,employeeRole,employeeHireDate,employeePhone,employeeAddress));
+                    employeeId, employeeName, employeeRole, employeeHireDate, employeePhone, employeeAddress));
             resetPage();
 
 
@@ -168,14 +164,15 @@ public class EmployeeManagementcontroller implements Initializable {
         String employeePhone = txtPhone.getText();
         String employeeAddress = txtAddress.getText();
 
+
 //        if (!validateInputs(employeeName, employeeRole, employeeHireDate, employeePhone, employeeAddress)) {
 //            return;
 //        }
 
 
         try {
-            employeeManagementBo.saveEmployee(new EmployeeManagementDto(
-                    employeeId ,employeeName,employeeRole,employeeHireDate,employeePhone,employeeAddress));
+            employeeManagementBo.updateEmployee(new EmployeeManagementDto(
+                    employeeId, employeeName, employeeRole, employeeHireDate, employeePhone, employeeAddress));
             resetPage();
 
         } catch (Exception e) {
@@ -196,7 +193,7 @@ public class EmployeeManagementcontroller implements Initializable {
         if (response.isPresent() && response.get() == ButtonType.YES) {
             String employeeId = lblId.getText();
             try {
-                employeeManagementBo.saveEmployee(employeeId);
+                employeeManagementBo.delete(employeeId);
                 resetPage();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -211,7 +208,7 @@ public class EmployeeManagementcontroller implements Initializable {
     }
 
     private void loadNextId() throws SQLException, ClassNotFoundException {
-        String nextId = employeeMnagementModel.getEmployeeId();
+        String nextId = employeeManagementBo.genarateNextId();
         lblId.setText(nextId);
     }
 

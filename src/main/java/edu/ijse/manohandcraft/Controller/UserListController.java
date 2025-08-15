@@ -57,18 +57,18 @@ public class UserListController implements Initializable {
 
     public void loadTableData() throws SQLException, ClassNotFoundException {
         tblUserList.getItems().clear();
-        ArrayList<UserListDto> allUsers = userListBo.getAllUserList();
-        for (UserListDto userListDto : allUsers) {
-            tblUserList.getItems().add(
-                    new UserListTM(
-                            userListDto.getUser_Id(),
-                            userListDto.getName(),
-                            userListDto.getUserName(),
-                            userListDto.getPassword(),
-                            userListDto.getRole(),
-                            userListDto.getRegistration_Date()));
+            ArrayList<UserListDto> allUsers = userListBo.getAllUserList();
+            for (UserListDto userListDto : allUsers) {
+                tblUserList.getItems().add(
+                        new UserListTM(
+                                userListDto.getUser_Id(),
+                                userListDto.getName(),
+                                userListDto.getUserName(),
+                                userListDto.getPassword(),
+                                userListDto.getRole(),
+                                userListDto.getRegistration_Date()));
 
-        }
+            }
     }
 
     private void resetPage() {

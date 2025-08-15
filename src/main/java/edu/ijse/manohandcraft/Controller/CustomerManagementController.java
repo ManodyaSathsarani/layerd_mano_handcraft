@@ -187,8 +187,10 @@ public class CustomerManagementController implements Initializable {
         if (response.isPresent() && response.get() == ButtonType.YES) {
             String customerId = lblId.getText();
             try {
-               customerManagementBo.saveCustomer(customerId);
-               resetPage();
+                customerManagementBo.deleteCustomer(customerId);
+                resetPage();
+
+
             } catch (Exception e) {
                 e.printStackTrace();
                 new Alert(Alert.AlertType.ERROR, "Something went wrong").show();

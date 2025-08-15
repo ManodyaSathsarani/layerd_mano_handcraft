@@ -27,23 +27,24 @@ public class EmployeeManagementDAOImpl implements EmployeeManagementDAO {
 
     @Override
     public boolean save(EmployeeManagement DTOs) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeUpdate("INSERT INTO Employees (employee_id, employee_name, role, hire_date,phone,phone) VALUES (?, ?, ?, ?,?,?)",
+        return SQLUtil.executeUpdate("INSERT INTO employees (employee_id, employee_name, role, hire_date,phone,address) VALUES (?, ?, ?, ?,?,?)",
                 DTOs.getEmployee_Id(),
                 DTOs.getName(),
                 DTOs.getRole(),
                 DTOs.getHire_date(),
                 DTOs.getPhone(),
-                DTOs.getPhone());
+                DTOs.getAddress());
     }
 
     @Override
     public boolean update(EmployeeManagement DTOs) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeUpdate("UPDATE employees SET (employee_id, employee_name, role, hire_date,phone,) VALUES (?, ?, ?, ?,?)",
+        return SQLUtil.executeUpdate("UPDATE employees SET (employee_id, employee_name, role, hire_date,phone,address) VALUES (?, ?, ?, ?,?,?)",
                 DTOs.getEmployee_Id(),
                 DTOs.getName(),
                 DTOs.getRole(),
                 DTOs.getHire_date(),
-                DTOs.getPhone());
+                DTOs.getPhone(),
+                DTOs.getAddress());
     }
 
     @Override

@@ -50,7 +50,7 @@ public class CustomerManagementDAOImpl implements CustomerManagementDAO {
 
     @Override
     public String genarateNextId() throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = SQLUtil.executeQuery("SELECT customer_id FROM Users ORDER BY customer_id DESC LIMIT 1");
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT customer_id FROM customers ORDER BY customer_id DESC LIMIT 1");
         char tableCharacter = 'C';
 
         if (resultSet.next()) {
